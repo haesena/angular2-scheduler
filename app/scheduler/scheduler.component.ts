@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 
 export class SchedulerComponent implements OnInit {
 
+    @Input() initialDate: Date = new Date();
+    @Input() mode : string = "day";
+
     ngOnInit(): void {
         scheduler.config.touch = "force";
-        scheduler.init('ng_scheduler', new Date(), "day");
+        scheduler.init('ng_scheduler', this.initialDate, this.mode);
     }
 }
