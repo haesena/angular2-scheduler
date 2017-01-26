@@ -18,13 +18,24 @@ import {
     animations: [
         trigger('miniCalState', [
             state('inactive', style({
-                transform: 'translateY(-100%)'
+                transform: 'translateY(-105%)'
             })),
             state('active',   style({
                 transform: 'translateY(0)'
             })),
-            transition('inactive => active', animate('100ms ease-in')),
-            transition('active => inactive', animate('100ms ease-out'))
+            transition('inactive => active', animate('250ms ease-in')),
+            transition('active => inactive', animate('250ms ease-out'))
+        ]),
+
+        trigger('eventDetails', [
+            state('void', style({
+                transform: 'translateY(+105%)'
+            })),
+            state('*',   style({
+                transform: 'translateY(0)'
+            })),
+            transition('void => *', animate('200ms ease-in')),
+            transition('* => void', animate('200ms ease-out'))
         ])
     ]
 })
@@ -33,11 +44,11 @@ export class SchedulerComponent implements OnInit {
 
     private events: any;
     private miniCalendar: any;
-    miniCalState: string;
+    miniCalState: string = 'inactive';
 
     @Input() initialDate: Date = new Date();
     @Input() mode : string = "day";
-    @Input() activeEvent : any;
+    @Input() activeEvent : any = null;
     @Input() showMiniCalendar : boolean = false;
 
     constructor(private schedulerService: SchedulerHttpService) { }

@@ -1,5 +1,5 @@
 
-<div [hidden]="!showMiniCalendar" class="mini-calendar-container" id="ng_scheduler_mini_calendar" [@miniCalState]="miniCalState">
+<div class="mini-calendar-container" id="ng_scheduler_mini_calendar" [@miniCalState]="miniCalState">
     <div id="cal_here" class="mini-calendar"></div>
 </div>
 <div style="width:100%; height:100%;" class="dhx_cal_container" id="ng_scheduler">
@@ -13,7 +13,7 @@
     <div class="dhx_cal_header"></div>
     <div class="dhx_cal_data"></div>
 </div>
-<div *ngIf="activeEvent" class="event-details">
+<div *ngIf="activeEvent" class="event-details" [@eventDetails]="activeEvent">
     <button (click)="setEvent()">Close</button>
     {{ activeEvent | json }}
 </div>
