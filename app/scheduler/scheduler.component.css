@@ -7,21 +7,33 @@
 }
 
 .mini-calendar-container {
-    background-color: white;
     width: 100%;
     position: fixed;
-    bottom: 0px;
+    top: 59px;
     z-index: 10;
+    text-align: center;
 }
 
 .mini-calendar {
+    background-color: white;
     width: 100%;
+    display: inline-block;
 }
 
 .dhx_year_month {
     font-size: 22px;
 }
 
-.dhx_minical_icon {
-    left: 20px !important;
+
+.dhx_cal_navline {
+    z-index: 13;
+    background-color: white;
 }
+
+
+.dhx_cal_container, .dhx_mini_calendar {
+    box-shadow: none !important;
+    padding: 0px;
+}
+
+
