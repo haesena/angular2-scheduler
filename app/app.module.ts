@@ -18,10 +18,15 @@ import { SchedulerHttpService } from './scheduler/scheduler.httpservice';
     InMemoryWebApiModule.forRoot(InMemorySchedulerService),
     HttpModule
   ],
-  declarations: [ AppComponent, SchedulerComponent ],
+  declarations: [
+    AppComponent,
+    SchedulerComponent
+  ],
   providers: [
     SchedulerHttpService,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

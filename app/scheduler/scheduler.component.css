@@ -1,0 +1,27 @@
+.event-details {
+    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 10;
+}
+
+.mini-calendar-container {
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: 10;
+}
+
+.mini-calendar {
+    width: 100%;
+}
+
+.dhx_year_month {
+    font-size: 22px;
+}
+
+.dhx_minical_icon {
+    left: 20px !important;
+}

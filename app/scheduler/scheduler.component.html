@@ -1,9 +1,15 @@
-<button (click)="loadEvents()">Click</button>
-<button (click)="log()">Log</button>
 <div style="width:100%; height:500px;" class="dhx_cal_container" id="ng_scheduler">
     <div class="dhx_cal_navline" ng-transclude>
         <div class="dhx_cal_date"></div>
+        <div class="dhx_minical_icon" id="dhx_minical_icon" (click)="showCalendar()">&nbsp;</div>
     </div>
     <div class="dhx_cal_header"></div>
     <div class="dhx_cal_data"></div>
+</div>
+<div *ngIf="activeEvent" class="event-details">
+    <button (click)="setEvent()">Close</button>
+    {{ activeEvent | json }}
+</div>
+<div [hidden]="!showMiniCalendar" class="mini-calendar-container" id="ng_scheduler_mini_calendar">
+    <div id="cal_here" class="mini-calendar"></div>
 </div>

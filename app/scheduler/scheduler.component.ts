@@ -1,30 +1,70 @@
-import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
+
+import { Component, Input, OnInit } from '@angular/core';
 import { SchedulerHttpService } from './scheduler.httpservice';
 
 @Component({
     moduleId: module.id,
     selector: 'dhtmlx-scheduler',
-    templateUrl: 'scheduler.component.html'
+    templateUrl: 'scheduler.component.html',
+    styleUrls: ['./scheduler.component.css']
 })
 
 export class SchedulerComponent implements OnInit {
 
-    events: any;
+    private events: any;
+    private miniCalendar: any;
 
     @Input() initialDate: Date = new Date();
     @Input() mode : string = "day";
+    @Input() activeEvent : any;
+    @Input() showMiniCalendar : boolean = false;
 
-    constructor(private schedulerService: SchedulerHttpService) {}
+    constructor(private schedulerService: SchedulerHttpService) { }
 
     ngOnInit(): void {
+
+        this.initScheduler();
+        this.loadEvents();
+    }
+
+    initScheduler() {
+
+        scheduler.config.readonly = true;
+        scheduler.config.details_on_dblclick = true;
         scheduler.config.touch = "force";
+
         scheduler.init('ng_scheduler', this.initialDate, this.mode);
 
-        // scheduler.attachEvent("onViewChange", function (new_mode , new_date){
-        //
-        // });
 
-        this.loadEvents();
+        scheduler.attachEvent("onViewChange", function (new_mode: string , new_date: string){
+            this.loadEvents();
+        }.bind(this));
+
+        scheduler.attachEvent("onClick", function (id: string, e: Event){
+            var ev = scheduler.getEvent(id);
+            this.setEvent(ev);
+            return true;
+        }.bind(this));
+
+        scheduler.attachEvent("onEmptyClick", function (d: Date, e: Event){
+            this.setEvent(null);
+            return true;
+        }.bind(this));
+
+        this.miniCalendar = scheduler.renderCalendar({
+            container:"cal_here",
+            navigation:true,
+            handler:function(date){
+                scheduler.setCurrentView(date, scheduler._mode);
+                this.showCalendar();
+            }.bind(this)
+        });
+
+
+    }
+
+    setEvent(ev: any) {
+        this.activeEvent = ev;
     }
 
     loadEvents() {
@@ -34,13 +74,21 @@ export class SchedulerComponent implements OnInit {
         var min_date = dateToString(state.min_date);
         var max_date = dateToString(state.max_date);
 
-        this.schedulerService.getEvents(min_date, max_date).then(events => {
-            this.events = events;
-            scheduler.parse(this.events, "json");
-        });
+        this.schedulerService.getEvents(min_date, max_date)
+            .then(events => {
+                this.events = events;
+                scheduler.parse(this.events, "json");
+            })
+            .catch(error => console.log(error));
     }
 
-    log() {
-        // console.log(scheduler);
+    showCalendar() {
+        this.activeEvent = null;
+        this.showMiniCalendar = !this.showMiniCalendar;
+        setTimeout(function() {
+            scheduler.updateCalendar(this.miniCalendar, scheduler._date);
+        }.bind(this), 0);
+
+        console.log(this.showMiniCalendar);
     }
 }
