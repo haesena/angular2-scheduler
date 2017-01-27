@@ -10,6 +10,8 @@ import {
     animate
 } from '@angular/core';
 
+declare var scheduler: any;
+
 @Component({
     moduleId: module.id,
     selector: 'dhtmlx-scheduler',

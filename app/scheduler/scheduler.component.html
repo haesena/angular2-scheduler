@@ -1,8 +1,8 @@
 
-<div class="mini-calendar-container" id="ng_scheduler_mini_calendar" [@miniCalState]="miniCalState">
-    <div id="cal_here" class="mini-calendar"></div>
-</div>
-<div style="width:100%; height:100%;" class="dhx_cal_container" id="ng_scheduler">
+<div style="width:100%; height:100%; position: relative;" class="dhx_cal_container" id="ng_scheduler">
+    <div class="mini-calendar-container" id="ng_scheduler_mini_calendar" [@miniCalState]="miniCalState">
+        <div id="cal_here" class="mini-calendar"></div>
+    </div>
     <div class="dhx_cal_navline" ng-transclude>
         <div class="dhx_cal_date" style="display: none;"></div>
         <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
