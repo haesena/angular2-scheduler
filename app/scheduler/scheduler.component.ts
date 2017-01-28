@@ -1,6 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
-import { SchedulerHttpService } from './scheduler.httpservice';
+import { SchedulerHttpService } from './service/scheduler.httpservice';
 
 import {
     trigger,
@@ -17,6 +17,9 @@ declare var scheduler: any;
     selector: 'dhtmlx-scheduler',
     templateUrl: 'scheduler.component.html',
     styleUrls: ['./scheduler.component.css'],
+
+
+    // Animations for the mini-calendar and the event-details
     animations: [
         trigger('miniCalState', [
             state('inactive', style({
@@ -56,17 +59,25 @@ export class SchedulerComponent implements OnInit {
     constructor(private schedulerService: SchedulerHttpService) { }
 
     ngOnInit(): void {
-
         this.initScheduler();
         this.loadEvents();
     }
 
     initScheduler() {
 
-        scheduler.config.readonly = true;
-        scheduler.config.details_on_dblclick = true;
+        // scheduler.config.readonly = true;
         scheduler.config.touch = "force";
         scheduler.config.scroll_hour = new Date().getHours();
+
+        scheduler.templates['day_date'] = scheduler.date.date_to_str("%d %M %Y");
+        scheduler.templates['week_date'] = function(d1:string, d2:string) {
+            var d = scheduler.date.date_to_str("%d");
+            var m = scheduler.date.date_to_str("%m");
+
+            return d(d1)+"."+m(d2)+" &ndash; "+d(d2)+"."+m(d2);
+        }
+
+        scheduler.templates['month_date'] = scheduler.date.date_to_str("%M %Y");
 
         scheduler.init('ng_scheduler', this.initialDate, this.mode);
 
@@ -97,7 +108,7 @@ export class SchedulerComponent implements OnInit {
         this.miniCalendar = scheduler.renderCalendar({
             container:"cal_here",
             navigation:true,
-            handler:function(date){
+            handler:function(date: string){
                 scheduler.setCurrentView(date, scheduler._mode);
                 this.toggleCalendar();
             }.bind(this)

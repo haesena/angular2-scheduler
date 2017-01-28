@@ -4,11 +4,17 @@
         <div id="cal_here" class="mini-calendar"></div>
     </div>
     <div class="dhx_cal_navline" ng-transclude>
-        <div class="dhx_cal_date" style="display: none;"></div>
-        <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-        <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-        <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
-        <div class="dhx_minical_icon" id="dhx_minical_icon" (click)="toggleCalendar()">&nbsp;</div>
+        <div class="threethree"><!--
+        --><div class="dhx_cal_prev_button" [ngClass]="{'ng_cal_nav_hidden': miniCalState == 'active', 'ng_cal_nav': true}">&nbsp;</div><!--
+     --></div><!--
+     --><div class="dhx_cal_date" [ngClass]="{'ng_cal_nav_hidden': miniCalState == 'active', 'ng_cal_nav': true}"></div><!--
+     --><div class="threethree"><!--
+        --><div class="dhx_cal_next_button" [ngClass]="{'ng_cal_nav_hidden': miniCalState == 'active', 'ng_cal_nav': true}">&nbsp;</div><!--
+     --></div>
+        <span><div class="dhx_minical_icon" style="right:20px; left:auto;" id="dhx_minical_icon" (click)="toggleCalendar()">&nbsp;</div></span>
+        <div class="dhx_cal_tab" name="day_tab" style="right:204px;" [ngClass]="{'ng_cal_nav_hidden': miniCalState == 'inactive', 'ng_cal_nav': true}"></div>
+        <div class="dhx_cal_tab" name="week_tab" style="right:140px;" [ngClass]="{'ng_cal_nav_hidden': miniCalState == 'inactive', 'ng_cal_nav': true}"></div>
+        <div class="dhx_cal_tab" name="month_tab" style="right:76px;" [ngClass]="{'ng_cal_nav_hidden': miniCalState == 'inactive', 'ng_cal_nav': true}"></div>
     </div>
     <div class="dhx_cal_header"></div>
     <div class="dhx_cal_data"></div>

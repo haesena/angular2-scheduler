@@ -28,8 +28,38 @@
 .dhx_cal_navline {
     z-index: 13;
     background-color: white;
+    /*display: inline-block;*/
 }
 
+.threethree, .dhx_cal_date {
+    display: inline-block;
+    width: 33%;
+    left: auto;
+    right: auto;
+    position: relative;
+}
+
+.dhx_cal_prev_button, .dhx_cal_next_button {
+    display: inline-block;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    padding: 0;
+}
+
+.dhx_cal_date {
+    transform: translateY(-20%);
+}
+
+.dhx_cal_prev_button {
+    float: right;
+}
+
+.dhx_cal_next_button {
+    float: left;
+}
 
 .dhx_cal_container, .dhx_mini_calendar {
     box-shadow: none !important;
@@ -37,3 +67,16 @@
 }
 
 
+[hidden] {
+    display: none;
+}
+
+.dhx_cal_select_menu {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .ng_cal_nav_hidden {
+        display: none;
+    }
+}
