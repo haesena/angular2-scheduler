@@ -12,9 +12,11 @@
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
+    <link href="node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Scheduler -->
-    <script src="lib/dhtmlxScheduler_v4.3.1/codebase/sources/dhtmlxscheduler.js"></script>
-    <script src="lib/dhtmlxScheduler_v4.3.1/codebase/sources/ext/dhtmlxscheduler_minical.js"></script>
+    <!-- if the css is included in the scheduler-component, the images will be loaded relative to the root-path, so for now, the css will be included globally -->
     <link rel="stylesheet" href="lib/dhtmlxScheduler_v4.3.1/codebase/dhtmlxscheduler_flat.css" type="text/css">
 
     <style type="text/css" media="screen">

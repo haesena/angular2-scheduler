@@ -1,0 +1,14 @@
+.event-detail-container {
+    min-height: 200px;
+}
+
+.app-toolbar-filler {
+    flex: 1 1 auto;
+}
+
+.close-action {
+    display: inline-block;
+    position: fixed;
+    top: 0px;
+    right: 10px;
+}

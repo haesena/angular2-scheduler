@@ -20,6 +20,5 @@
     <div class="dhx_cal_data"></div>
 </div>
 <div *ngIf="activeEvent" class="event-details" [@eventDetails]="activeEvent">
-    <button (click)="setEvent()">Close</button>
-    {{ activeEvent | json }}
+    <dhtmlx-event-details (closeDetailEvent)="setEvent()" [event]="activeEvent"></dhtmlx-event-details>
 </div>

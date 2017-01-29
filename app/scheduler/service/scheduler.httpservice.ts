@@ -9,7 +9,7 @@ export class SchedulerHttpService {
 
     constructor (private http: Http) {}
 
-    private apiUrl = 'http://192.168.1.40/events.php';
+    private apiUrl = 'http://localhost/events.php';
 
     getEvents(minDate: string, maxDate: string) : any {
 
