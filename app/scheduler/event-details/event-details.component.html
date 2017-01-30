@@ -1,7 +1,10 @@
-<md-toolbar color="primary">
+<md-toolbar color="primary" [ngStyle]="{'background':color}">
+    <button md-icon-button (click)="closeDetail()">
+        <md-icon>close</md-icon>
+    </button>
     {{ event.text }}
     <span class="app-toolbar-filler"></span>
-    <button md-button (click)="closeDetail()">CLOSE</button>
+    <!--<button md-button (click)="closeDetail()">CLOSE</button>-->
 </md-toolbar>
 
 {{ event | json }}

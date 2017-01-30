@@ -1,5 +1,4 @@
-
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { SchedulerHttpService } from '../service/scheduler.httpservice';
 
 @Component({
@@ -10,7 +9,9 @@ import { SchedulerHttpService } from '../service/scheduler.httpservice';
 })
 
 
-export class EventDetails {
+export class EventDetails implements OnInit {
+
+    private color: string = "#5B9BE0";
 
     @Input() event: any;
     @Input() isNew: boolean = false;
@@ -19,5 +20,11 @@ export class EventDetails {
 
     closeDetail() {
         this.closeDetailEvent.emit();
+    }
+
+    ngOnInit(): void {
+        if(this.event.color != undefined)  {
+            this.color = this.event.color;
+        }
     }
 }
