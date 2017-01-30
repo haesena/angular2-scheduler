@@ -70,7 +70,7 @@ export class SchedulerComponent implements OnInit {
     initScheduler() {
 
         // Enable touch-mode
-        scheduler.config.touch = "force";
+        scheduler.config.touch = true;
         // Scroll to the actual hour
         scheduler.config.scroll_hour = new Date().getHours();
         // Disable to default tooltip while moving or creating events

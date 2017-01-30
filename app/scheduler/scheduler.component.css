@@ -6,6 +6,14 @@
     z-index: 20;
 }
 
+@media screen and (min-width: 500px) {
+    .event-details {
+        max-width: 500px;
+        margin-left: -250px;
+        left: 50%;
+    }
+}
+
 .mini-calendar-container {
     width: 100%;
     position: absolute;
