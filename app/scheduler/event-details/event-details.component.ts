@@ -26,5 +26,13 @@ export class EventDetails implements OnInit {
         if(this.event.color != undefined)  {
             this.color = this.event.color;
         }
+
+        let start = this.event.start_date;
+        let end = this.event.end_date;
+
+        // Events can not span multiple days, so it's safe to just parse the start-date
+        this.event.date = start.getDate() + '.' + (start.getMonth() + 1) + "." + start.getFullYear();
+        this.event.start_time = start.getHours() + ':' + start.getMinutes();
+        this.event.end_time = end.getHours() + ':' + end.getMinutes();
     }
 }

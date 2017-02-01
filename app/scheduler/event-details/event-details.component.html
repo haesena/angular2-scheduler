@@ -7,4 +7,19 @@
     <!--<button md-button (click)="closeDetail()">CLOSE</button>-->
 </md-toolbar>
 
-{{ event | json }}
+<md-card>
+    <md-list class="app-list">
+        <md-list-item>
+            <md2-datepicker placeholder="Date" [(ngModel)]="event.date"  type="date"></md2-datepicker>
+        </md-list-item>
+        <md-list-item>
+            <md2-datepicker placeholder="Start" [(ngModel)]="event.start_time"  type="time"></md2-datepicker>
+        </md-list-item>
+        <md-list-item>
+            <md2-datepicker placeholder="End" [(ngModel)]="event.end_time"  type="time"></md2-datepicker>
+        </md-list-item>
+        <md-list-item>
+            <md-input placeholder="Teacher" value="{{ event.teacher }}"></md-input>
+        </md-list-item>
+    </md-list>
+</md-card>
