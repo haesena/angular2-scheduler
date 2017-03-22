@@ -65,6 +65,11 @@ export class SchedulerComponent implements OnInit {
     ngOnInit(): void {
         this.initScheduler();
         this.loadEvents();
+
+        // redraw the scheduler
+        setTimeout(function() {
+            scheduler.updateView();
+        }, 0);
     }
 
     initScheduler() {
@@ -76,9 +81,23 @@ export class SchedulerComponent implements OnInit {
         // Disable to default tooltip while moving or creating events
         scheduler.config.touch_tip = false;
 
+
+        // Readonly-Settings
+        scheduler.config.readonly_form = true;
+        scheduler.config.dblclick_create = false;
+        scheduler.config.drag_create = false;
+        scheduler.config.drag_resize = false;
+        scheduler.config.drag_move = false;
+
+        // Date-Format we get from the WebService
+        scheduler.config.xml_date="%Y-%m-%d %H:%i";
+
+        scheduler.config.first_hour = 7;
+        scheduler.config.last_hour = 19;
+
         // Set the templates for the date in the navbar
-        scheduler.templates['day_date'] = scheduler.date.date_to_str("%d %M %Y");
-        scheduler.templates['month_date'] = scheduler.date.date_to_str("%M %Y");
+        scheduler.templates['day_date'] = scheduler.date.date_to_str("%d.%m.%Y");
+        scheduler.templates['month_date'] = scheduler.date.date_to_str("%m.%Y");
         scheduler.templates['week_date'] = function(d1:string, d2:string) {
             var d = scheduler.date.date_to_str("%d");
             var m = scheduler.date.date_to_str("%m");
