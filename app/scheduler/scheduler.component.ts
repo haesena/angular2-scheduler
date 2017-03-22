@@ -105,6 +105,10 @@ export class SchedulerComponent implements OnInit {
             return d(d1)+"."+m(d2)+" &ndash; "+d(d2)+"."+m(d2);
         }
 
+        /**
+         * Additional scheduler configurations can be made here
+         */
+
         // Initialize the scheduler
         scheduler.init('ng_scheduler', this.initialDate, this.mode);
 

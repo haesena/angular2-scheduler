@@ -1,6 +1,8 @@
-import { NgModule }      from '@angular/core';
+import { NgModule }       from '@angular/core';
 import { MaterialModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
+import { Md2Module }      from 'md2';
+import { BrowserModule }  from '@angular/platform-browser';
+import { FormsModule }    from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
@@ -16,7 +18,9 @@ import { SchedulerHttpService } from './scheduler/service/scheduler.httpservice'
   imports: [
     BrowserModule,
     HttpModule,
-    MaterialModule.forRoot()
+    FormsModule,
+    MaterialModule.forRoot(),
+    Md2Module.forRoot(),
   ],
   declarations: [
     AppComponent,
